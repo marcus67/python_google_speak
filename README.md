@@ -1,5 +1,4 @@
 # python_google_speak
-
 This is a little Python module that uses a Google Translate online web service to convert short 
 texts into high quality MP3 tracks.
 
