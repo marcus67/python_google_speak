@@ -3,6 +3,7 @@
 
 import unittest
 import io
+import os.path
 
 from python_google_speak import speech_generator
 
@@ -16,6 +17,10 @@ class TestGoogleSpeak(unittest.TestCase):
         gs = speech_generator.SpeechGenerator()
         self.assertIsNotNone(gs)
 
+    def setUp(self):
+
+        self.base_dir = os.path.dirname(__file__)
+
     def test_speak_english(self):
 
         gs = speech_generator.SpeechGenerator(p_locale="en_US")
@@ -23,7 +28,7 @@ class TestGoogleSpeak(unittest.TestCase):
 
         sound = gs.generate_audio_data(p_text=TEXT_EN)
 
-        with io.open("data/hello.mp3", "rb") as f:
+        with io.open(os.path.join(self.base_dir, "data/hello.mp3"), "rb") as f:
             ref_sound = f.read()
 
         self.assertEqual(sound, ref_sound)
@@ -35,7 +40,7 @@ class TestGoogleSpeak(unittest.TestCase):
 
         sound = gs.generate_audio_data(p_text=TEXT_DE)
 
-        with io.open("data/hallo.mp3", "rb") as f:
+        with io.open(os.path.join(self.base_dir, "data/hallo.mp3"), "rb") as f:
             ref_sound = f.read()
 
         self.assertEqual(sound, ref_sound)
