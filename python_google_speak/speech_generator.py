@@ -1,15 +1,14 @@
 # -*- coding: utf-8 -*-
-
-# See http://archive.is/OgeSS
+# This file is part of https://github.com/marcus67/python_google_speak
 
 import requests
 import locale
-import playsound
 
 
+# See http://archive.is/OgeSS
 GOOGLE_URL = "http://translate.google.com/translate_tts"
 
-class GoogleSpeak(object):
+class SpeechGenerator(object):
     
     def __init__(self, p_locale=None):
         
@@ -19,7 +18,7 @@ class GoogleSpeak(object):
             self.locale = locale.getdefaultlocale()[0]
             
             
-    def speak_to_audio_data(self, p_text):
+    def generate_audio_data(self, p_text):
         
         params = {
             "ie" : "UTF-8",
@@ -28,8 +27,7 @@ class GoogleSpeak(object):
             "tl": self.locale}
         
         try:
-            result = requests.get(url=GOOGLE_URL, 
-                                  params=params)
+            result = requests.get(url=GOOGLE_URL, params=params)
             
         except Exception as e:
             raise Exception("Exception '%s' while retrieving audio file from Google for text '%s' " %
@@ -41,15 +39,6 @@ class GoogleSpeak(object):
             
         return result.content
         
-        
 
-def test():
-    gs = GoogleSpeak(p_locale="de_DE")
-    audio_data = gs.speak_to_audio_data(p_text="Die Bibliothek scheint korrekt installiert worden zu sein.")
-    
-    with open("/tmp/audio.bin", "wb") as file:
-        file.write(audio_data)
-        
-    playsound.playsound("/tmp/audio.bin")
     
     
