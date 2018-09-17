@@ -6,6 +6,13 @@ texts into high quality MP3 tracks.
 
 See https://github.com/marcus67/python_google_speak
 
+## CircleCI Continuous Integration Status
+
+<A HREF="https://circleci.com/gh/marcus67/python_google_speak/tree/master"><IMG SRC="https://img.shields.io/circleci/project/github/marcus67/python_google_speak.svg?label=Python3%20master"></A> 
+
+## GitHub Status
+
+<A HREF="https://github.com/marcus67/python_google_speak"><IMG SRC="https://img.shields.io/github/forks/marcus67/python_google_speak.svg?label=forks"></A> <A HREF="https://github.com/marcus67/python_google_speak/stargazers"><IMG SRC="https://img.shields.io/github/stars/marcus67/python_google_speak.svg?label=stars"></A> <A HREF="https://github.com/marcus67/python_google_speak/watchers"><IMG SRC="https://img.shields.io/github/watchers/marcus67/python_google_speak.svg?label=watchers"></A> <A HREF="https://github.com/marcus67/python_google_speak/issues"><IMG SRC="https://img.shields.io/github/issues/marcus67/python_google_speak.svg"></A> <A HREF="https://github.com/marcus67/python_google_speak/pulls"><IMG SRC="https://img.shields.io/github/issues-pr/marcus67/python_google_speak.svg"></A>
 ## Sample Usage ##
 <PRE>
 from python_google_speak import speech_generator
