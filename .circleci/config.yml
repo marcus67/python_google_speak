@@ -8,5 +8,5 @@ jobs:
       - checkout
       - run: apt-get update
       - run: apt-get -y install python-pip
-      - run: pip3 requests playsound pygi
+      - run: pip3 install requests playsound pygi
       - run: PYTHONPATH=python_google_speak python3.5 -m unittest
