@@ -1,9 +1,0 @@
-Package: python-google-speak
-Version: 0.1
-Section: base
-Priority: optional
-Architecture: amd64
-Depends: python3,
-         python3-pip
-Maintainer: Marcus Rickert <marcus.rickert@web.de>
-Description: Simple Python module to create speech files using Google translate URL
