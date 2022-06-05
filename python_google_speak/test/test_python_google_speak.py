@@ -33,7 +33,7 @@ class TestGoogleSpeak(unittest.TestCase):
 
         self.assertEqual(sound, ref_sound)
 
-    def test_speak_english(self):
+    def test_speak_german(self):
 
         gs = speech_generator.SpeechGenerator(p_locale="de_DE")
         self.assertIsNotNone(gs)

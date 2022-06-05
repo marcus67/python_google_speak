@@ -1,0 +1,48 @@
+#    See https://github.com/marcus67/python_google_speak
+#
+#    This program is free software; you can redistribute it and/or modify
+#    it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation; either version 3 of the License, or
+#    (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+#
+#    You should have received a copy of the GNU General Public License along
+#    with this program; if not, write to the Free Software Foundation, Inc.,
+#    51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+
+##################################################################################
+# Please, beware that this file has been generated! Do not make any changes here #
+# but only to python_base_app/templates/gitlab-ci.template.yml!                  #
+##################################################################################
+
+stages:
+  - build
+  - test
+  - publish_pypi
+  
+build:
+  image: marcusrickert/docker-python-app:latest
+  stage: build
+  script:
+    - python3 ./setup.py sdist
+
+  artifacts:
+      when: always
+      paths:
+        - dist/*.tar.gz
+
+test:
+  image: marcusrickert/docker-python-app:latest
+  stage: test
+  script:
+    - python3 -m pytest python_google_speak/test
+
+publish_pypi:
+  image: marcusrickert/docker-python-app:latest
+  stage: publish
+  script:
+    - twine upload --username __token__ --password ${PYPI_API_TOKEN} dist/*.tar.gz
