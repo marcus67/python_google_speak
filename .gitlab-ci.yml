@@ -46,4 +46,4 @@ publish_pypi:
   image: marcusrickert/docker-python-app:latest
   stage: publish_pypi
   script:
-    - twine upload --username __token__ --password ${PYPI_API_TOKEN} dist/*.tar.gz
+    - twine upload --username __token__ --password ${TEST_PYPI_API_TOKEN} dist/*.tar.gz
