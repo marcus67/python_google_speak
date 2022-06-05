@@ -39,6 +39,7 @@ test:
   image: marcusrickert/docker-python-app:latest
   stage: test
   script:
+    - pip install pytest
     - python3 -m pytest python_google_speak/test
 
 publish_pypi:
