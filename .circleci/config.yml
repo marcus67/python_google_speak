@@ -6,5 +6,5 @@ jobs:
       - image: python:3.9
     steps:
       - checkout
-      - run: pip install -r requirements.txt
-      - run: PYTHONPATH=python_google_speak python3.9 -m unittest
+      - run: pip install poetry
+      - run: poetry build
