@@ -8,3 +8,53 @@ jobs:
       - checkout
       - run: pip install poetry
       - run: poetry build
+      - store_artifacts:
+          path: dist/*.deb
+          path: dist/*.whl
+      - persist_to_workspace:
+          root: dist
+          paths:
+            - *.deb
+            - *.whl
+
+  test:
+    working_directory: ~
+    docker:
+      - image: python:3.9
+    steps:
+      - checkout
+      - pip install poetry
+      - poetry install
+      - poetry run pytest
+
+  publish_test_pypi:
+    filters:
+      branches:
+        only:
+          - master
+    working_directory: ~
+    docker:
+      - image: python:3.9
+    steps:
+      - checkout
+      - attach_workspace:
+          at: dist
+      - pip install poetry
+      - poetry config repositories.testrepo $TEST_PYPI_API_URL
+      - poetry publish --repository testrepo --username __token__ --password $TEST_PYPI_API_TOKEN
+
+  publish_pypi:
+    filters:
+      branches:
+        only:
+          - release
+    working_directory: ~
+    docker:
+      - image: python:3.9
+    steps:
+      - checkout
+      - attach_workspace:
+          at: dist
+      - pip install poetry
+      - poetry config repositories.testrepo $PYPI_API_URL
+      - poetry publish --repository testrepo --username __token__ --password $PYPI_API_TOKEN
