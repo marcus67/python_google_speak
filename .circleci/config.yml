@@ -9,13 +9,14 @@ jobs:
       - run: pip install poetry
       - run: poetry build
       - store_artifacts:
-          path: dist/*.deb
-          path: dist/*.whl
+          path: "dist/*.deb"
+      - store_artifacts:
+          path: "dist/*.whl"
       - persist_to_workspace:
           root: dist
           paths:
-            - *.deb
-            - *.whl
+            - "*.deb"
+            - "*.whl"
 
   test:
     working_directory: ~
