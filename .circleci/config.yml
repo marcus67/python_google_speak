@@ -24,9 +24,9 @@ jobs:
       - image: python:3.9
     steps:
       - checkout
-      - pip install poetry
-      - poetry install
-      - poetry run pytest
+      - run: pip install poetry
+      - run: poetry install
+      - run: poetry run pytest
 
   publish_test_pypi:
     working_directory: ~
@@ -36,9 +36,9 @@ jobs:
       - checkout
       - attach_workspace:
           at: dist
-      - pip install poetry
-      - poetry config repositories.testrepo $TEST_PYPI_API_URL
-      - poetry publish --repository testrepo --username __token__ --password $TEST_PYPI_API_TOKEN
+      - run: pip install poetry
+      - run: poetry config repositories.testrepo $TEST_PYPI_API_URL
+      - run: poetry publish --repository testrepo --username __token__ --password $TEST_PYPI_API_TOKEN
 
   publish_pypi:
     working_directory: ~
@@ -48,9 +48,9 @@ jobs:
       - checkout
       - attach_workspace:
           at: dist
-      - pip install poetry
-      - poetry config repositories.testrepo $PYPI_API_URL
-      - poetry publish --repository testrepo --username __token__ --password $PYPI_API_TOKEN
+      - run: pip install poetry
+      - run: poetry config repositories.testrepo $PYPI_API_URL
+      - run: poetry publish --repository testrepo --username __token__ --password $PYPI_API_TOKEN
 
 workflows:
     version: 2
