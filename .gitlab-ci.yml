@@ -28,7 +28,8 @@ build:
   image: marcusrickert/docker-python-app:latest
   stage: build
   script:
-    - python3 ./setup.py sdist
+    - pip install poetry
+    - poetry build
 
   artifacts:
       when: always
@@ -39,11 +40,14 @@ test:
   image: marcusrickert/docker-python-app:latest
   stage: test
   script:
-    - pip install pytest
-    - python3 -m pytest python_google_speak/test
+    - pip install poetry
+    - poetry install
+    - poetry run pytest
 
 publish_pypi:
   image: marcusrickert/docker-python-app:latest
   stage: publish_pypi
   script:
-    - twine upload --repository-url $TEST_PYPI_API_URL --username __token__ --password ${TEST_PYPI_API_TOKEN} dist/*.tar.gz
+    - pip install poetry
+    - poetry config repositories.testrepo $TEST_PYPI_API_URL
+    - poetry publish --repository testrepo --username __token__ --password $TEST_PYPI_API_TOKEN

@@ -1,4 +1,0 @@
-include requirements.txt
-include README.md
-include CHANGES.md
-include python_google_speak/test/data/*

@@ -2,7 +2,7 @@
 
 This document lists all changes of `python_google_speak` with the most recent changes at the top.
 
-### Version 0.2 (June 5th 8th, 2022)
+### Version 0.2.0 (June 18th, 2022)
 
 * Remove package `pygi` from requirements
 * Read requirements and long package description from files 
@@ -12,6 +12,7 @@ This document lists all changes of `python_google_speak` with the most recent ch
 * Supply `.gitlab-ci.yaml`
 * Update `.circleci/config.yml`
 * Optionally skip test case for audio comparison using `SKIP_AUDIO_COMPARISON` 
+* Switch to package manager `poetry`
 
 ### Version 0.1 (September 18th, 2018)
 
