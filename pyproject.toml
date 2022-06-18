@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "python_google_speak"
+name = "python-google-speak"
 version = "0.2.0"
 description = "Simple class to create speech files using the Google translate URL"
 authors = ["Marcus Rickert <marcus.rickert@web.de>"]
