@@ -10,6 +10,7 @@ This document lists all changes of `python_google_speak` with the most recent ch
 * Correct test cases (separate German and English test cases)
 * Remove Eclipse configuration file
 * Supply `.gitlab-ci.yaml`
+* Update `.circleci/config.yml`
 
 ### Version 0.1 (September 18th, 2018)
 
