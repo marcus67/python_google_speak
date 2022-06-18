@@ -13,6 +13,7 @@ This document lists all changes of `python_google_speak` with the most recent ch
 * Update `.circleci/config.yml`
 * Optionally skip test case for audio comparison using `SKIP_AUDIO_COMPARISON` 
 * Switch to package manager `poetry`
+* Push wheel to PyPi
 
 ### Version 0.1 (September 18th, 2018)
 

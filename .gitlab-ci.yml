@@ -35,6 +35,7 @@ build:
       when: always
       paths:
         - dist/*.tar.gz
+        - dist/*.tar.whl
 
 test:
   image: marcusrickert/docker-python-app:latest
