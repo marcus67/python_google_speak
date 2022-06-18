@@ -10,6 +10,8 @@ from python_google_speak import speech_generator
 TEXT_EN = "hello"
 TEXT_DE = "hallo"
 
+MP3_PREFIX = b'\xff\xf3D\xc4\x00'
+
 class TestGoogleSpeak(unittest.TestCase):
 
     def test_creation(self):
@@ -21,7 +23,29 @@ class TestGoogleSpeak(unittest.TestCase):
 
         self.base_dir = os.path.dirname(__file__)
 
-    def test_speak_english(self):
+    def test_generate_english(self):
+
+        gs = speech_generator.SpeechGenerator(p_locale="en_US")
+        self.assertIsNotNone(gs)
+
+        sound = gs.generate_audio_data(p_text=TEXT_EN)
+        self.assertIsNotNone(sound)
+
+        self.assertEqual(sound[0:len(MP3_PREFIX)], MP3_PREFIX)
+
+    def test_generate_german(self):
+
+        gs = speech_generator.SpeechGenerator(p_locale="de_DE")
+        self.assertIsNotNone(gs)
+
+        sound = gs.generate_audio_data(p_text=TEXT_DE)
+        self.assertIsNotNone(sound)
+
+        self.assertEqual(sound[0:len(MP3_PREFIX)], MP3_PREFIX)
+
+
+    @unittest.skipIf(os.getenv("SKIP_AUDIO_COMPARISON") is not None, "No comparison of generated audio")
+    def test_spoken_english(self):
 
         gs = speech_generator.SpeechGenerator(p_locale="en_US")
         self.assertIsNotNone(gs)
@@ -33,7 +57,8 @@ class TestGoogleSpeak(unittest.TestCase):
 
         self.assertEqual(sound, ref_sound)
 
-    def test_speak_german(self):
+    @unittest.skipIf(os.getenv("SKIP_AUDIO_COMPARISON") is not None, "No comparison of generated audio")
+    def test_spoken_german(self):
 
         gs = speech_generator.SpeechGenerator(p_locale="de_DE")
         self.assertIsNotNone(gs)
@@ -44,6 +69,3 @@ class TestGoogleSpeak(unittest.TestCase):
             ref_sound = f.read()
 
         self.assertEqual(sound, ref_sound)
-
-
-

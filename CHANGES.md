@@ -11,6 +11,7 @@ This document lists all changes of `python_google_speak` with the most recent ch
 * Remove Eclipse configuration file
 * Supply `.gitlab-ci.yaml`
 * Update `.circleci/config.yml`
+* Optionally skip test case for audio comparison using `SKIP_AUDIO_COMPARISON` 
 
 ### Version 0.1 (September 18th, 2018)
 
