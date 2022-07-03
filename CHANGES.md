@@ -2,6 +2,10 @@
 
 This document lists all changes of `python_google_speak` with the most recent changes at the top.
 
+### Version 0.2.1 (July 3rd, 2022)
+
+* Remove fixed dependencies for PIP packages
+
 ### Version 0.2.0 (June 18th, 2022)
 
 * Remove package `pygi` from requirements
