@@ -36,7 +36,7 @@ def main():
                 speech_output.playback_audio_data(p_audio_blob=audio_blob)
 
     except Exception as e:
-        sys.stderr("ERROR '{}' while processing texts".format(str(e)))
+        sys.stderr.write("ERROR '{}' while processing texts".format(str(e)))
 
 if __name__ == '__main__':
     sys.exit(main())
