@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 # This file is part of https://github.com/marcus67/python_google_speak
 
-import playsound
+from playsound3 import playsound
 import tempfile
 
 def playback_audio_data(p_audio_blob, p_block=True):
 
-    with tempfile.NamedTemporaryFile("wb") as f:
+    with tempfile.NamedTemporaryFile("wb", suffix=".mp3") as f:
         f.write(p_audio_blob)
-        playsound.playsound(f.name, block=p_block)
+        playsound(f.name, block=p_block)
